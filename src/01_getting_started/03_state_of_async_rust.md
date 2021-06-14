@@ -83,12 +83,18 @@ make it difficult to compose code intended for the different environments.
 
 Even async code cannot always be combined freely. Some crates depend on a
 specific async runtime to function. If so, it is usually specified in the
-crate's dependency list.
+crate's dependency list. Also take into account the version of the runtime
+each dependency rely on, as they can be incompatible.
 
 These compatibility issues can limit your options, so make sure to
 research which async runtime and what crates you may need early.
 Once you have settled in with a runtime, you won't have to worry
 much about compatibility.
+
+But still, sometimes one of your dependencies can adopt a new, incompatible
+runtime version, while another one still rely on the previous version of the
+runtime even for new releases. It may lock you with outdated versions
+of the both dependencies.
 
 ## Performance characteristics
 
